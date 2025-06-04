@@ -906,6 +906,8 @@
         setupSearchFunctionality();
         setupThemeControl();
         setupFontSizeControl();
+        setupImageToBase64();
+        setupJsonValidator();
 
         setupCodeBeautifier();
         setupMarkdownPreview();
@@ -2095,6 +2097,131 @@
             regexInput.style.borderColor = '#EF4444';
             matchResult.textContent = 'Invalid regex pattern';
             matchResult.style.color = '#EF4444';
+          }
+        });
+      }
+
+      function setupImageToBase64() {
+        const input = document.getElementById("image-base64-input");
+        const output = document.getElementById("base64-image-output");
+        const convertBtn = document.getElementById("convert-to-base64");
+
+        if (!input || !output || !convertBtn) return;
+
+        function handleImageConversion(file) {
+          if (!file) {
+            alert('Please select an image first');
+            return;
+          }
+
+          if (!file.type.startsWith('image/')) {
+            alert('Please select a valid image file');
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            try {
+              output.value = e.target.result;
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          };
+          reader.onerror = function() {
+            output.value = "Error reading file";
+            output.style.borderColor = '#EF4444';
+          };
+          reader.readAsDataURL(file);
+        }
+
+        input.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            output.value = 'Converting...';
+          }
+        });
+
+        convertBtn.addEventListener('click', () => {
+          const file = input.files[0];
+          handleImageConversion(file);
+        });
+
+        const dropZone = document.createElement('div');
+        dropZone.className = 'border-2 border-dashed border-gray-400 rounded-lg p-8 text-center mt-4 hover:border-blue-500 transition-colors';
+        dropZone.innerHTML = '<p class="text-gray-400">Drag and drop an image here</p>';
+        input.parentNode.insertBefore(dropZone, input.nextSibling);
+
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('border-blue-500');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('border-blue-500');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('border-blue-500');
+          const file = e.dataTransfer.files[0];
+          if (file && file.type.startsWith('image/')) {
+            input.files = e.dataTransfer.files;
+            handleImageConversion(file);
+          } else {
+            alert('Please drop a valid image file');
+          }
+        });
+      }
+
+      function setupJsonValidator() {
+        const input = document.getElementById("json-validator-input");
+        const validateBtn = document.getElementById("validate-json");
+        const status = document.getElementById("validation-status");
+
+        if (!input || !validateBtn || !status) return;
+
+        function validateJson(jsonString) {
+          try {
+            JSON.parse(jsonString);
+            return { valid: true, error: null };
+          } catch (error) {
+            return { valid: false, error: error.message };
+          }
+        }
+
+        validateBtn.addEventListener("click", () => {
+          const result = validateJson(input.value.trim());
+          
+          if (result.valid) {
+            status.textContent = "Valid JSON";
+            status.style.color = "#10B981"; 
+            input.style.borderColor = '#4B5563';
+          } else {
+            status.textContent = "Invalid JSON: " + result.error;
+            status.style.color = "#EF4444"; 
+            input.style.borderColor = '#EF4444';
+          }
+        });
+
+        input.addEventListener("input", () => {
+          if (!input.value.trim()) {
+            status.textContent = "";
+            input.style.borderColor = '#4B5563';
+            return;
+          }
+
+          const result = validateJson(input.value.trim());
+          if (result.valid) {
+            status.textContent = "Valid JSON";
+            status.style.color = "#10B981";
+            input.style.borderColor = '#4B5563';
+          } else {
+            status.textContent = "Invalid JSON";
+            status.style.color = "#EF4444";
+            input.style.borderColor = '#EF4444';
           }
         });
       }
