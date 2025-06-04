@@ -1276,17 +1276,14 @@
               return;
             }
 
-            // Split the texts into lines for line-by-line comparison
             const lines1 = str1.split('\n');
             const lines2 = str2.split('\n');
 
-            // Create line-by-line diff
             const diff = Diff.diffLines(str1, str2);
             
             let htmlOutput = '<div class="space-y-2">';
             
             diff.forEach((part) => {
-              // Create the HTML class and prefix based on the type of change
               const className = part.added ? 'text-green-500' : 
                                part.removed ? 'text-red-500' : 
                                'text-gray-100';
@@ -1294,9 +1291,8 @@
                             part.removed ? '- ' : 
                             '  ';
                             
-              // Split the part's value into lines and add them to output
               const lines = part.value.split('\n')
-                .filter(line => line.length > 0) // Remove empty lines
+                .filter(line => line.length > 0) 
                 .map(line => {
                   return `<div class="font-mono ${className}">${prefix}${line.replace(/ /g, '&nbsp;')}</div>`;
                 })
@@ -1536,7 +1532,6 @@
 
         if (!input || !canvas || !convertBtn || !downloadLink) return;
 
-        // Hide canvas by default but keep it in the DOM for conversion
         canvas.style.display = 'none';
 
         function handleImageConversion(file) {
@@ -1554,43 +1549,34 @@
           reader.onload = function(e) {
             const img = new Image();
             img.onload = function() {
-              // Set canvas dimensions to match image
               canvas.width = img.width;
               canvas.height = img.height;
 
-              // Draw image on canvas
               const ctx = canvas.getContext('2d');
-              ctx.fillStyle = 'white'; // Set white background
+              ctx.fillStyle = 'white'; 
               ctx.fillRect(0, 0, canvas.width, canvas.height);
               ctx.drawImage(img, 0, 0);
 
               try {
-                // Convert to JPG
                 const jpgData = canvas.toDataURL('image/jpeg', 0.9);
                 
-                // Setup download link
                 downloadLink.href = jpgData;
                 downloadLink.download = file.name.replace('.png', '.jpg');
                 downloadLink.classList.remove('hidden');
                 
-                // Show preview
                 const previewImg = document.createElement('img');
                 previewImg.src = jpgData;
                 previewImg.className = 'mt-4 max-w-full h-auto rounded-lg shadow-lg';
                 
-                // Remove any existing preview
                 const existingPreview = document.querySelector('.preview-image');
                 if (existingPreview) {
                   existingPreview.remove();
                 }
                 
-                // Add preview class for future reference
                 previewImg.classList.add('preview-image');
                 
-                // Insert preview before download link
                 downloadLink.parentNode.insertBefore(previewImg, downloadLink);
                 
-                // Show success message
                 const successMsg = document.createElement('div');
                 successMsg.className = 'text-green-500 mt-2';
                 successMsg.textContent = 'Conversion successful! Click the button below to download.';
@@ -1606,11 +1592,9 @@
           reader.readAsDataURL(file);
         }
 
-        // Handle file selection
         input.addEventListener('change', (e) => {
           const file = e.target.files[0];
           if (file) {
-            // Reset UI
             downloadLink.classList.add('hidden');
             const existingPreview = document.querySelector('.preview-image');
             if (existingPreview) {
@@ -1619,13 +1603,11 @@
           }
         });
 
-        // Handle convert button click
         convertBtn.addEventListener('click', () => {
           const file = input.files[0];
           handleImageConversion(file);
         });
 
-        // Handle drag and drop
         const dropZone = document.createElement('div');
         dropZone.className = 'border-2 border-dashed border-gray-400 rounded-lg p-8 text-center mt-4 hover:border-purple-500 transition-colors';
         dropZone.innerHTML = '<p class="text-gray-400">Drag and drop a PNG image here</p>';
@@ -2046,9 +2028,7 @@
 
         convertBtn.addEventListener("click", () => {
           try {
-            // First parse the JSON to ensure it's valid
             const jsonData = JSON.parse(jsonInput.value);
-            // Convert to YAML using js-yaml library
             const yamlString = jsyaml.dump(jsonData, {
               indent: 2,
               lineWidth: -1,
@@ -2074,41 +2054,35 @@
 
         testBtn.addEventListener("click", () => {
           try {
-            // Get the regex pattern and test string
             const pattern = regexInput.value;
             const text = testString.value;
 
-            // Create a new RegExp object
             const regex = new RegExp(pattern, 'g');
 
-            // Find all matches
             const matches = [...text.matchAll(regex)];
 
             if (matches.length > 0) {
-              // Create detailed match information
               const matchInfo = matches.map((match, index) => {
                 return `Match ${index + 1}: "${match[0]}" at position ${match.index}`;
               }).join('\n');
 
               matchResult.innerHTML = `Found ${matches.length} match(es):\n${matchInfo}`;
               matchResult.style.whiteSpace = 'pre-line';
-              matchResult.style.color = '#10B981'; // Success color
+              matchResult.style.color = '#10B981'; 
             } else {
               matchResult.textContent = 'No matches found';
-              matchResult.style.color = '#9CA3AF'; // Gray color
+              matchResult.style.color = '#9CA3AF'; 
             }
 
-            // Reset borders
             regexInput.style.borderColor = '#4B5563';
             testString.style.borderColor = '#4B5563';
           } catch (error) {
             matchResult.textContent = 'Invalid regular expression: ' + error.message;
-            matchResult.style.color = '#EF4444'; // Error color
-            regexInput.style.borderColor = '#EF4444';
+            matchResult.style.color = '#EF4444'; 
+                        regexInput.style.borderColor = '#EF4444';
           }
         });
 
-        // Add input event listeners for real-time validation
         regexInput.addEventListener('input', () => {
           try {
             if (regexInput.value) {
