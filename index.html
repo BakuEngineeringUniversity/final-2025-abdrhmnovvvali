@@ -21,13 +21,11 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
       
-      /* Base styles */
       body {
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         transition: all 0.3s ease;
       }
 
-      /* Light Theme */
       body[data-theme="light"] {
         background-color: #ffffff;
         color: #000000;
@@ -44,7 +42,6 @@
         border: 1px solid #e0e0e0;
       }
 
-      /* Dark Theme */
       body[data-theme="dark"] {
         background-color: #1a1a1a;
         color: #ffffff;
@@ -61,7 +58,6 @@
         border: 1px solid #404040;
       }
 
-      /* Dracula Theme */
       body[data-theme="dracula"] {
         background-color: #282a36;
         color: #f8f8f2;
@@ -78,7 +74,6 @@
         border: 1px solid #6272a4;
       }
 
-      /* Nord Theme */
       body[data-theme="nord"] {
         background-color: #2e3440;
         color: #eceff4;
@@ -95,7 +90,6 @@
         border: 1px solid #4c566a;
       }
 
-      /* GitHub Dark Theme */
       body[data-theme="github-dark"] {
         background-color: #0d1117;
         color: #c9d1d9;
@@ -174,19 +168,16 @@
         transform: scale(1.1);
       }
 
-      /* Accent Colors */
       [data-accent="purple"] { --accent-color: #8b5cf6; }
       [data-accent="blue"] { --accent-color: #3b82f6; }
       [data-accent="green"] { --accent-color: #10b981; }
       [data-accent="red"] { --accent-color: #ef4444; }
       [data-accent="yellow"] { --accent-color: #f59e0b; }
 
-      /* Font Size Classes */
       .text-size-small { font-size: 14px; }
       .text-size-medium { font-size: 16px; }
       .text-size-large { font-size: 18px; }
 
-      /* Theme Transitions */
       body {
         transition: background 0.3s ease, color 0.3s ease;
       }
@@ -199,12 +190,10 @@
         transition: background-color 0.3s ease, color 0.3s ease;
       }
 
-      /* Active accent button style */
       .accent-button.active {
         box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-color);
       }
 
-      /* Add these font size styles */
       :root {
         --base-font-size: 16px;
       }
@@ -213,7 +202,6 @@
         font-size: var(--base-font-size);
       }
 
-      /* Scale text based on base font size */
       .text-sm { font-size: calc(var(--base-font-size) * 0.875); }
       .text-base { font-size: var(--base-font-size); }
       .text-lg { font-size: calc(var(--base-font-size) * 1.125); }
@@ -390,11 +378,9 @@
           </div>
         </div>
 
-        <!-- Tool Sections -->
         <section id="converters-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent mb-6">Converters</h2>
           
-          <!-- Number Base Converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Number Base Converter</h3>
             <input type="text" id="number-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter a number">
@@ -418,7 +404,6 @@
             </div>
           </div>
 
-          <!-- CSV to JSON Converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">CSV ↔ JSON Converter</h3>
             <div class="grid grid-cols-2 gap-4">
@@ -441,7 +426,6 @@
             </div>
           </div>
 
-          <!-- Image to Base64 Converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Image to Base64 Converter</h3>
             <div class="mb-4">
@@ -453,7 +437,6 @@
             <textarea id="base64-image-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly placeholder="Base64 output will appear here"></textarea>
           </div>
 
-          <!-- Existing JSON to YAML converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON to YAML Converter</h3>
             <textarea id="json-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter JSON"></textarea>
@@ -485,7 +468,6 @@
         <section id="formatters-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-6">Formatters</h2>
           
-          <!-- Code Beautifier -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Code Beautifier</h3>
             <div class="mb-4">
@@ -502,7 +484,6 @@
             <textarea id="beautified-output" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly></textarea>
           </div>
 
-          <!-- Date Formatter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Date Formatter</h3>
             <input type="datetime-local" id="date-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500">
@@ -515,7 +496,6 @@
             <input type="text" id="formatted-date" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
           </div>
 
-          <!-- Color Converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Color Converter</h3>
             <div class="grid grid-cols-2 gap-4 mb-4">
@@ -531,7 +511,6 @@
             <div class="w-full h-20 rounded-lg mb-4" id="color-preview"></div>
           </div>
 
-          <!-- Existing JSON formatter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON Formatter</h3>
             <textarea id="json-formatter-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Enter JSON to format"></textarea>
@@ -553,7 +532,6 @@
             <input type="text" id="uuid-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" value="Generated UUID will appear here" readonly />
           </div>
 
-          <!-- Lorem Ipsum Generator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Lorem Ipsum Generator</h3>
             <div class="grid grid-cols-2 gap-4 mb-4">
@@ -572,7 +550,6 @@
             <textarea id="lorem-output" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly></textarea>
           </div>
 
-          <!-- Hash Generator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Hash Generator</h3>
             <textarea id="hash-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Enter text to hash"></textarea>
@@ -594,7 +571,6 @@
         <section id="text-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-6">Text Tools</h2>
           
-          <!-- URL Encoder/Decoder -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">URL Encoder/Decoder</h3>
             <textarea id="url-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text to encode/decode"></textarea>
@@ -609,7 +585,6 @@
             <textarea id="url-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" placeholder="Result" readonly></textarea>
           </div>
 
-          <!-- HTML Encoder/Decoder -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">HTML Encoder/Decoder</h3>
             <textarea id="html-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text to encode/decode"></textarea>
@@ -624,7 +599,6 @@
             <textarea id="html-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" placeholder="Result" readonly></textarea>
           </div>
 
-          <!-- Markdown Preview -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Markdown Preview</h3>
             <div class="grid grid-cols-2 gap-4">
@@ -637,7 +611,6 @@
             </div>
           </div>
 
-          <!-- Existing text case converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Text Case Converter</h3>
             <textarea id="text-case-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text"></textarea>
@@ -675,7 +648,6 @@
         <section id="validators-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent mb-6">Validators</h2>
           
-          <!-- Email Validator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Email Validator</h3>
             <input type="text" id="email-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter email address">
@@ -685,7 +657,6 @@
             <p class="mt-4 text-lg">Validation Status: <span id="email-validation-status" class="font-medium"></span></p>
           </div>
 
-          <!-- URL Validator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">URL Validator</h3>
             <input type="text" id="url-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter URL">
@@ -695,7 +666,6 @@
             <p class="mt-4 text-lg">Validation Status: <span id="url-validation-status" class="font-medium"></span></p>
           </div>
 
-          <!-- Existing JSON validator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON Validator</h3>
             <textarea id="json-validator-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter JSON to validate"></textarea>
@@ -748,7 +718,6 @@
             <h3 class="text-xl font-semibold text-white mb-4">Theme Settings</h3>
             
             <div class="space-y-6">
-              <!-- Theme Selector -->
               <div class="flex flex-col space-y-2">
                 <label class="text-lg text-white">Select Theme</label>
                 <select id="theme-selector" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
@@ -760,7 +729,6 @@
                 </select>
               </div>
 
-              <!-- Accent Color -->
               <div class="flex flex-col space-y-2">
                 <label class="text-lg text-white">Accent Color</label>
                 <div class="flex space-x-4">
@@ -772,7 +740,6 @@
                 </div>
               </div>
 
-              <!-- Font Size -->
               <div class="flex flex-col space-y-2">
                 <div class="flex justify-between items-center">
                   <label class="text-lg text-white">Font Size</label>
@@ -923,12 +890,9 @@
     </div>
 
     <script>
-      // Wait for the DOM to be fully loaded
       document.addEventListener("DOMContentLoaded", function() {
-        // Navigation Setup
         setupNavigation();
         
-        // Tools Setup
         setupTextCaseConverter();
         setupBase64Tool();
         setupJsonFormatter();
@@ -943,7 +907,6 @@
         setupThemeControl();
         setupFontSizeControl();
 
-        // Add new setup calls
         setupCodeBeautifier();
         setupMarkdownPreview();
         setupEmailValidator();
@@ -951,14 +914,11 @@
         setupImageConverter();
         setupCsvJsonConverter();
         
-        // Add Lorem Ipsum generator setup
         setupLoremIpsumGenerator();
         
-        // Add Hash Generator setup
         setupHashGenerator();
       });
 
-      // Navigation Functions
       function setupNavigation() {
         const sidebarItems = document.querySelectorAll(".sidebar-item");
         const toolContents = document.querySelectorAll(".tool-content");
@@ -966,11 +926,9 @@
         const backButton = document.getElementById("back-button");
         const homeNav = document.getElementById("home-nav");
 
-        // Hide all tool contents initially
         toolContents.forEach(content => content.style.display = "none");
         if (homeContent) homeContent.style.display = "block";
 
-        // Show specific section
         function showSection(sectionId) {
           toolContents.forEach(content => content.style.display = "none");
           if (homeContent) homeContent.style.display = "none";
@@ -978,7 +936,6 @@
           if (section) section.style.display = "block";
         }
 
-        // Add click handlers for navigation
         sidebarItems.forEach(item => {
           item.addEventListener("click", function() {
             const sectionId = this.dataset.section;
@@ -986,7 +943,6 @@
           });
         });
 
-        // Back button handler
         if (backButton) {
           backButton.addEventListener("click", () => {
             toolContents.forEach(content => content.style.display = "none");
@@ -994,7 +950,6 @@
           });
         }
 
-        // Home nav handler
         if (homeNav) {
           homeNav.addEventListener("click", () => {
             toolContents.forEach(content => content.style.display = "none");
@@ -1003,7 +958,6 @@
         }
       }
 
-      // Text Case Converter
       function setupTextCaseConverter() {
         const input = document.getElementById("text-case-input");
         const output = document.getElementById("text-case-output");
@@ -1034,7 +988,6 @@
         }
       }
 
-      // Base64 Tool
       function setupBase64Tool() {
         const input = document.getElementById("base64-input");
         const output = document.getElementById("base64-output");
@@ -1068,7 +1021,6 @@
         }
       }
 
-      // JSON Formatter
       function setupJsonFormatter() {
         const input = document.getElementById("json-formatter-input");
         const output = document.getElementById("json-formatter-output");
@@ -1088,7 +1040,6 @@
         });
       }
 
-      // Number Base Converter
       function setupNumberBaseConverter() {
         const input = document.getElementById("number-input");
         const binary = document.getElementById("binary-output");
@@ -1134,7 +1085,6 @@
         });
       }
 
-      // UUID Generator
       function setupUuidGenerator() {
         const generateBtn = document.getElementById("generate-uuid");
         const output = document.getElementById("uuid-output");
@@ -1151,7 +1101,6 @@
         });
       }
 
-      // Color Converter
       function setupColorConverter() {
         const hexInput = document.getElementById("hex-color");
         const rgbOutput = document.getElementById("rgb-color");
@@ -1181,7 +1130,6 @@
         hexInput.addEventListener('change', updateColor);
       }
 
-      // Date Formatter
       function setupDateFormatter() {
         const input = document.getElementById("date-input");
         const format = document.getElementById("date-format");
@@ -1225,7 +1173,6 @@
         format.addEventListener('change', updateDate);
       }
 
-      // URL Tool
       function setupUrlTool() {
         const input = document.getElementById("url-input");
         const output = document.getElementById("url-output");
@@ -1259,7 +1206,6 @@
         }
       }
 
-      // HTML Tool
       function setupHtmlTool() {
         const input = document.getElementById("html-input");
         const output = document.getElementById("html-output");
@@ -1305,7 +1251,6 @@
         }
       }
 
-      // Text Comparison
       function setupTextComparison() {
         const text1 = document.getElementById("text1");
         const text2 = document.getElementById("text2");
@@ -1332,7 +1277,6 @@
         });
       }
 
-      // Search Functionality
       function setupSearchFunctionality() {
         const searchInput = document.getElementById("search-input");
         if (!searchInput) return;
@@ -1346,7 +1290,6 @@
         });
       }
 
-      // Theme Control
       function setupThemeControl() {
         const themeSelector = document.getElementById('theme-selector');
         if (!themeSelector) return;
@@ -1356,7 +1299,6 @@
           localStorage.setItem('selectedTheme', themeName);
         }
 
-        // Load saved theme or use default
         const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
         setTheme(savedTheme);
         themeSelector.value = savedTheme;
@@ -1364,13 +1306,11 @@
         themeSelector.addEventListener('change', e => setTheme(e.target.value));
       }
 
-      // Font Size Control
       function setupFontSizeControl() {
         const slider = document.getElementById('font-size-slider');
         const label = document.getElementById('font-size-label');
         if (!slider || !label) return;
 
-        // Load saved font size or use default
         const savedSize = localStorage.getItem('fontSizeValue') || '16';
         document.body.style.fontSize = savedSize + 'px';
         slider.value = savedSize;
@@ -1384,7 +1324,6 @@
         });
       }
 
-      // Code Beautifier
       function setupCodeBeautifier() {
         const input = document.getElementById("code-input");
         const output = document.getElementById("beautified-output");
@@ -1454,7 +1393,6 @@
         });
       }
 
-      // Markdown Preview
       function setupMarkdownPreview() {
         const input = document.getElementById("markdown-input");
         const preview = document.getElementById("markdown-preview");
@@ -1482,7 +1420,6 @@
         });
       }
 
-      // Email Validator
       function setupEmailValidator() {
         const input = document.getElementById("email-input");
         const validateBtn = document.getElementById("validate-email");
@@ -1505,7 +1442,6 @@
         });
       }
 
-      // URL Validator
       function setupUrlValidator() {
         const input = document.getElementById("url-input");
         const validateBtn = document.getElementById("validate-url");
@@ -1532,7 +1468,6 @@
         });
       }
 
-      // Image to Base64 Converter
       function setupImageConverter() {
         const input = document.getElementById("image-base64-input");
         const output = document.getElementById("base64-image-output");
@@ -1566,7 +1501,6 @@
         });
       }
 
-      // CSV ↔ JSON Converter
       function setupCsvJsonConverter() {
         const csvInput = document.getElementById("csv-input");
         const jsonOutput = document.getElementById("csv-json-output");
@@ -1657,7 +1591,6 @@
         });
       }
 
-      // Lorem Ipsum Generator
       function setupLoremIpsumGenerator() {
         const paragraphsInput = document.getElementById("lorem-paragraphs");
         const wordsInput = document.getElementById("lorem-words");
@@ -1692,7 +1625,7 @@
         }
 
         function generateParagraph(wordCount) {
-          const sentenceCount = Math.ceil(wordCount / 15); // Average 15 words per sentence
+          const sentenceCount = Math.ceil(wordCount / 15); 
           const sentences = [];
           let remainingWords = wordCount;
 
@@ -1728,7 +1661,6 @@
           }
         });
 
-        // Add input validation
         function validateNumberInput(input, min, max) {
           input.addEventListener('input', () => {
             let value = parseInt(input.value) || 0;
@@ -1741,7 +1673,6 @@
         validateNumberInput(wordsInput, 10, 100);
       }
 
-      // Hash Generator
       function setupHashGenerator() {
         const input = document.getElementById("hash-input");
         const output = document.getElementById("hash-output");
@@ -1751,7 +1682,6 @@
 
         if (!input || !output || !md5Btn || !sha1Btn || !sha256Btn) return;
 
-        // MD5 implementation
         function md5(string) {
           function md5cycle(x, k) {
             let a = x[0], b = x[1], c = x[2], d = x[3];
@@ -1906,7 +1836,6 @@
           return hex(md51(string));
         }
 
-        // SHA-1 implementation
         async function sha1(message) {
           const msgBuffer = new TextEncoder().encode(message);
           const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
@@ -1914,7 +1843,6 @@
           return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
 
-        // SHA-256 implementation
         async function sha256(message) {
           const msgBuffer = new TextEncoder().encode(message);
           const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
