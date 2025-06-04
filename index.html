@@ -394,6 +394,66 @@
         <section id="converters-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent mb-6">Converters</h2>
           
+          <!-- Number Base Converter -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Number Base Converter</h3>
+            <input type="text" id="number-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter a number">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+              <div>
+                <label class="block text-gray-400 mb-2">Binary</label>
+                <input type="text" id="binary-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">Decimal</label>
+                <input type="text" id="decimal-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">Hexadecimal</label>
+                <input type="text" id="hex-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">Octal</label>
+                <input type="text" id="octal-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+              </div>
+            </div>
+          </div>
+
+          <!-- CSV to JSON Converter -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">CSV ↔ JSON Converter</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-400 mb-2">CSV Input</label>
+                <textarea id="csv-input" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter CSV data"></textarea>
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">JSON Output</label>
+                <textarea id="csv-json-output" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none" readonly></textarea>
+              </div>
+            </div>
+            <div class="flex space-x-4">
+              <button id="csv-to-json" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
+                CSV to JSON
+              </button>
+              <button id="json-to-csv" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
+                JSON to CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Image to Base64 Converter -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Image to Base64 Converter</h3>
+            <div class="mb-4">
+              <input type="file" id="image-base64-input" accept="image/*" class="block w-full text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600">
+            </div>
+            <button id="convert-to-base64" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors mb-4">
+              Convert to Base64
+            </button>
+            <textarea id="base64-image-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly placeholder="Base64 output will appear here"></textarea>
+          </div>
+
+          <!-- Existing JSON to YAML converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON to YAML Converter</h3>
             <textarea id="json-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter JSON"></textarea>
@@ -425,6 +485,53 @@
         <section id="formatters-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-6">Formatters</h2>
           
+          <!-- Code Beautifier -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Code Beautifier</h3>
+            <div class="mb-4">
+              <select id="code-language" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+              </select>
+            </div>
+            <textarea id="code-input" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Enter code to beautify"></textarea>
+            <button id="beautify-code" class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors mb-4">
+              Beautify Code
+            </button>
+            <textarea id="beautified-output" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly></textarea>
+          </div>
+
+          <!-- Date Formatter -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Date Formatter</h3>
+            <input type="datetime-local" id="date-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <select id="date-format" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              <option value="iso">ISO Format</option>
+              <option value="short">Short Date</option>
+              <option value="long">Long Date</option>
+              <option value="relative">Relative Time</option>
+            </select>
+            <input type="text" id="formatted-date" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+          </div>
+
+          <!-- Color Converter -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Color Converter</h3>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-gray-400 mb-2">HEX Color</label>
+                <input type="text" id="hex-color" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="#RRGGBB">
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">RGB Color</label>
+                <input type="text" id="rgb-color" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly>
+              </div>
+            </div>
+            <div class="w-full h-20 rounded-lg mb-4" id="color-preview"></div>
+          </div>
+
+          <!-- Existing JSON formatter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON Formatter</h3>
             <textarea id="json-formatter-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Enter JSON to format"></textarea>
@@ -445,11 +552,92 @@
             </button>
             <input type="text" id="uuid-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" value="Generated UUID will appear here" readonly />
           </div>
+
+          <!-- Lorem Ipsum Generator -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Lorem Ipsum Generator</h3>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-gray-400 mb-2">Number of Paragraphs</label>
+                <input type="number" id="lorem-paragraphs" min="1" max="10" value="3" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+              <div>
+                <label class="block text-gray-400 mb-2">Words per Paragraph</label>
+                <input type="number" id="lorem-words" min="10" max="100" value="50" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-pink-500">
+              </div>
+            </div>
+            <button id="generate-lorem" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg transition-colors mb-4">
+              Generate Lorem Ipsum
+            </button>
+            <textarea id="lorem-output" class="w-full h-64 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly></textarea>
+          </div>
+
+          <!-- Hash Generator -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Hash Generator</h3>
+            <textarea id="hash-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Enter text to hash"></textarea>
+            <div class="grid grid-cols-3 gap-4 mb-4">
+              <button id="generate-md5" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg transition-colors">
+                Generate MD5
+              </button>
+              <button id="generate-sha1" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg transition-colors">
+                Generate SHA-1
+              </button>
+              <button id="generate-sha256" class="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg transition-colors">
+                Generate SHA-256
+              </button>
+            </div>
+            <input type="text" id="hash-output" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none" readonly placeholder="Hash output will appear here">
+          </div>
         </section>
 
         <section id="text-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-6">Text Tools</h2>
           
+          <!-- URL Encoder/Decoder -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">URL Encoder/Decoder</h3>
+            <textarea id="url-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text to encode/decode"></textarea>
+            <div class="flex space-x-4">
+              <button id="url-encode" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">
+                URL Encode
+              </button>
+              <button id="url-decode" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">
+                URL Decode
+              </button>
+            </div>
+            <textarea id="url-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" placeholder="Result" readonly></textarea>
+          </div>
+
+          <!-- HTML Encoder/Decoder -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">HTML Encoder/Decoder</h3>
+            <textarea id="html-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text to encode/decode"></textarea>
+            <div class="flex space-x-4">
+              <button id="html-encode" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">
+                HTML Encode
+              </button>
+              <button id="html-decode" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">
+                HTML Decode
+              </button>
+            </div>
+            <textarea id="html-output" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mt-4 focus:outline-none" placeholder="Result" readonly></textarea>
+          </div>
+
+          <!-- Markdown Preview -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Markdown Preview</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <textarea id="markdown-input" class="w-full h-96 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter Markdown text"></textarea>
+              </div>
+              <div id="markdown-preview" class="w-full h-96 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 overflow-auto prose prose-invert">
+                Preview will appear here
+              </div>
+            </div>
+          </div>
+
+          <!-- Existing text case converter -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">Text Case Converter</h3>
             <textarea id="text-case-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Enter text"></textarea>
@@ -487,6 +675,27 @@
         <section id="validators-section" class="tool-content p-8">
           <h2 class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent mb-6">Validators</h2>
           
+          <!-- Email Validator -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">Email Validator</h3>
+            <input type="text" id="email-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter email address">
+            <button id="validate-email" class="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-colors">
+              Validate Email
+            </button>
+            <p class="mt-4 text-lg">Validation Status: <span id="email-validation-status" class="font-medium"></span></p>
+          </div>
+
+          <!-- URL Validator -->
+          <div class="glass-effect rounded-xl p-6 mb-6">
+            <h3 class="text-xl font-semibold text-white mb-4">URL Validator</h3>
+            <input type="text" id="url-input" class="w-full bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter URL">
+            <button id="validate-url" class="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-colors">
+              Validate URL
+            </button>
+            <p class="mt-4 text-lg">Validation Status: <span id="url-validation-status" class="font-medium"></span></p>
+          </div>
+
+          <!-- Existing JSON validator -->
           <div class="glass-effect rounded-xl p-6 mb-6">
             <h3 class="text-xl font-semibold text-white mb-4">JSON Validator</h3>
             <textarea id="json-validator-input" class="w-full h-40 bg-gray-900 bg-opacity-50 text-gray-100 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter JSON to validate"></textarea>
@@ -714,355 +923,1038 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", function() {
+        // Navigation Setup
+        setupNavigation();
+        
+        // Tools Setup
+        setupTextCaseConverter();
+        setupBase64Tool();
+        setupJsonFormatter();
+        setupNumberBaseConverter();
+        setupUuidGenerator();
+        setupColorConverter();
+        setupDateFormatter();
+        setupUrlTool();
+        setupHtmlTool();
+        setupTextComparison();
+        setupSearchFunctionality();
+        setupThemeControl();
+        setupFontSizeControl();
+
+        // Add new setup calls
+        setupCodeBeautifier();
+        setupMarkdownPreview();
+        setupEmailValidator();
+        setupUrlValidator();
+        setupImageConverter();
+        setupCsvJsonConverter();
+        
+        // Add Lorem Ipsum generator setup
+        setupLoremIpsumGenerator();
+        
+        // Add Hash Generator setup
+        setupHashGenerator();
+      });
+
+      // Navigation Functions
+      function setupNavigation() {
         const sidebarItems = document.querySelectorAll(".sidebar-item");
-        const toolCards = document.querySelectorAll(".transition");
         const toolContents = document.querySelectorAll(".tool-content");
         const homeContent = document.getElementById("home-content");
         const backButton = document.getElementById("back-button");
         const homeNav = document.getElementById("home-nav");
 
-        // Theme functionality
+        // Hide all tool contents initially
+        toolContents.forEach(content => content.style.display = "none");
+        if (homeContent) homeContent.style.display = "block";
+
+        // Show specific section
+        function showSection(sectionId) {
+          toolContents.forEach(content => content.style.display = "none");
+          if (homeContent) homeContent.style.display = "none";
+          const section = document.getElementById(sectionId);
+          if (section) section.style.display = "block";
+        }
+
+        // Add click handlers for navigation
+        sidebarItems.forEach(item => {
+          item.addEventListener("click", function() {
+            const sectionId = this.dataset.section;
+            if (sectionId) showSection(sectionId);
+          });
+        });
+
+        // Back button handler
+        if (backButton) {
+          backButton.addEventListener("click", () => {
+            toolContents.forEach(content => content.style.display = "none");
+            if (homeContent) homeContent.style.display = "block";
+          });
+        }
+
+        // Home nav handler
+        if (homeNav) {
+          homeNav.addEventListener("click", () => {
+            toolContents.forEach(content => content.style.display = "none");
+            if (homeContent) homeContent.style.display = "block";
+          });
+        }
+      }
+
+      // Text Case Converter
+      function setupTextCaseConverter() {
+        const input = document.getElementById("text-case-input");
+        const output = document.getElementById("text-case-output");
+        const upperBtn = document.getElementById("to-uppercase");
+        const lowerBtn = document.getElementById("to-lowercase");
+        const titleBtn = document.getElementById("to-titlecase");
+
+        if (!input || !output) return;
+
+        if (upperBtn) {
+          upperBtn.addEventListener("click", () => {
+            output.value = input.value.toUpperCase();
+          });
+        }
+
+        if (lowerBtn) {
+          lowerBtn.addEventListener("click", () => {
+            output.value = input.value.toLowerCase();
+          });
+        }
+
+        if (titleBtn) {
+          titleBtn.addEventListener("click", () => {
+            output.value = input.value.replace(/\w\S*/g, txt => 
+              txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+            );
+          });
+        }
+      }
+
+      // Base64 Tool
+      function setupBase64Tool() {
+        const input = document.getElementById("base64-input");
+        const output = document.getElementById("base64-output");
+        const encodeBtn = document.getElementById("encode-base64");
+        const decodeBtn = document.getElementById("decode-base64");
+
+        if (!input || !output) return;
+
+        if (encodeBtn) {
+          encodeBtn.addEventListener("click", () => {
+            try {
+              output.value = btoa(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: Invalid input for Base64 encoding";
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+
+        if (decodeBtn) {
+          decodeBtn.addEventListener("click", () => {
+            try {
+              output.value = atob(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: Invalid Base64 input";
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+      }
+
+      // JSON Formatter
+      function setupJsonFormatter() {
+        const input = document.getElementById("json-formatter-input");
+        const output = document.getElementById("json-formatter-output");
+        const formatBtn = document.getElementById("format-json");
+
+        if (!input || !output || !formatBtn) return;
+
+        formatBtn.addEventListener("click", () => {
+          try {
+            const parsed = JSON.parse(input.value);
+            output.value = JSON.stringify(parsed, null, 2);
+            output.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.value = "Error: Invalid JSON - " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
+        });
+      }
+
+      // Number Base Converter
+      function setupNumberBaseConverter() {
+        const input = document.getElementById("number-input");
+        const binary = document.getElementById("binary-output");
+        const decimal = document.getElementById("decimal-output");
+        const hex = document.getElementById("hex-output");
+        const octal = document.getElementById("octal-output");
+
+        if (!input || !binary || !decimal || !hex || !octal) return;
+
+        input.addEventListener("input", () => {
+          try {
+            let num;
+            const val = input.value.trim().toLowerCase();
+            
+            if (val.startsWith("0x")) {
+              num = parseInt(val.slice(2), 16);
+            } else if (val.startsWith("0b")) {
+              num = parseInt(val.slice(2), 2);
+            } else if (val.startsWith("0o")) {
+              num = parseInt(val.slice(2), 8);
+            } else {
+              num = parseInt(val);
+            }
+
+            if (!isNaN(num)) {
+              binary.value = "0b" + num.toString(2);
+              decimal.value = num.toString(10);
+              hex.value = "0x" + num.toString(16).toUpperCase();
+              octal.value = "0o" + num.toString(8);
+              [binary, decimal, hex, octal].forEach(el => el.style.borderColor = '#4B5563');
+            } else {
+              [binary, decimal, hex, octal].forEach(el => {
+                el.value = "Invalid number";
+                el.style.borderColor = '#EF4444';
+              });
+            }
+          } catch (error) {
+            [binary, decimal, hex, octal].forEach(el => {
+              el.value = "Error: " + error.message;
+              el.style.borderColor = '#EF4444';
+            });
+          }
+        });
+      }
+
+      // UUID Generator
+      function setupUuidGenerator() {
+        const generateBtn = document.getElementById("generate-uuid");
+        const output = document.getElementById("uuid-output");
+
+        if (!generateBtn || !output) return;
+
+        generateBtn.addEventListener("click", () => {
+          const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = Math.random() * 16 | 0;
+            const v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+          output.value = uuid;
+        });
+      }
+
+      // Color Converter
+      function setupColorConverter() {
+        const hexInput = document.getElementById("hex-color");
+        const rgbOutput = document.getElementById("rgb-color");
+        const preview = document.getElementById("color-preview");
+
+        if (!hexInput || !rgbOutput || !preview) return;
+
+        function updateColor() {
+          const hex = hexInput.value.startsWith('#') ? hexInput.value : '#' + hexInput.value;
+          if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            rgbOutput.value = `rgb(${r}, ${g}, ${b})`;
+            preview.style.backgroundColor = hex;
+            hexInput.style.borderColor = '#4B5563';
+            rgbOutput.style.borderColor = '#4B5563';
+          } else {
+            rgbOutput.value = 'Invalid HEX color';
+            preview.style.backgroundColor = 'transparent';
+            hexInput.style.borderColor = '#EF4444';
+            rgbOutput.style.borderColor = '#EF4444';
+          }
+        }
+
+        hexInput.addEventListener('input', updateColor);
+        hexInput.addEventListener('change', updateColor);
+      }
+
+      // Date Formatter
+      function setupDateFormatter() {
+        const input = document.getElementById("date-input");
+        const format = document.getElementById("date-format");
+        const output = document.getElementById("formatted-date");
+
+        if (!input || !format || !output) return;
+
+        function updateDate() {
+          if (!input.value) return;
+          
+          const date = new Date(input.value);
+          switch(format.value) {
+            case 'iso':
+              output.value = date.toISOString();
+              break;
+            case 'short':
+              output.value = date.toLocaleDateString();
+              break;
+            case 'long':
+              output.value = date.toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              });
+              break;
+            case 'relative':
+              const now = new Date();
+              const diff = Math.floor((now - date) / 1000);
+              if (diff < 60) output.value = 'Just now';
+              else if (diff < 3600) output.value = Math.floor(diff / 60) + ' minutes ago';
+              else if (diff < 86400) output.value = Math.floor(diff / 3600) + ' hours ago';
+              else output.value = Math.floor(diff / 86400) + ' days ago';
+              break;
+          }
+        }
+
+        input.addEventListener('change', updateDate);
+        format.addEventListener('change', updateDate);
+      }
+
+      // URL Tool
+      function setupUrlTool() {
+        const input = document.getElementById("url-input");
+        const output = document.getElementById("url-output");
+        const encodeBtn = document.getElementById("url-encode");
+        const decodeBtn = document.getElementById("url-decode");
+
+        if (!input || !output) return;
+
+        if (encodeBtn) {
+          encodeBtn.addEventListener("click", () => {
+            try {
+              output.value = encodeURIComponent(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+
+        if (decodeBtn) {
+          decodeBtn.addEventListener("click", () => {
+            try {
+              output.value = decodeURIComponent(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+      }
+
+      // HTML Tool
+      function setupHtmlTool() {
+        const input = document.getElementById("html-input");
+        const output = document.getElementById("html-output");
+        const encodeBtn = document.getElementById("html-encode");
+        const decodeBtn = document.getElementById("html-decode");
+
+        if (!input || !output) return;
+
+        function htmlEncode(text) {
+          const div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        }
+
+        function htmlDecode(html) {
+          const div = document.createElement('div');
+          div.innerHTML = html;
+          return div.textContent;
+        }
+
+        if (encodeBtn) {
+          encodeBtn.addEventListener("click", () => {
+            try {
+              output.value = htmlEncode(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+
+        if (decodeBtn) {
+          decodeBtn.addEventListener("click", () => {
+            try {
+              output.value = htmlDecode(input.value);
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          });
+        }
+      }
+
+      // Text Comparison
+      function setupTextComparison() {
+        const text1 = document.getElementById("text1");
+        const text2 = document.getElementById("text2");
+        const compareBtn = document.getElementById("compareTexts");
+        const output = document.getElementById("comparisonOutput");
+
+        if (!text1 || !text2 || !compareBtn || !output) return;
+
+        compareBtn.addEventListener("click", () => {
+          if (text1.value === text2.value) {
+            output.innerHTML = "The texts are identical";
+            return;
+          }
+
+          const diffs = Diff.diffChars(text1.value, text2.value);
+          const diffHtml = diffs.map(part => {
+            const color = part.added ? 'text-green-500' : 
+                         part.removed ? 'text-red-500' : 
+                         'text-gray-100';
+            return `<span class="${color}">${part.value}</span>`;
+          }).join('');
+          
+          output.innerHTML = diffHtml;
+        });
+      }
+
+      // Search Functionality
+      function setupSearchFunctionality() {
+        const searchInput = document.getElementById("search-input");
+        if (!searchInput) return;
+
+        searchInput.addEventListener("input", () => {
+          const searchTerm = searchInput.value.toLowerCase();
+          document.querySelectorAll('.sidebar-item').forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+          });
+        });
+      }
+
+      // Theme Control
+      function setupThemeControl() {
+        const themeSelector = document.getElementById('theme-selector');
+        if (!themeSelector) return;
+
         function setTheme(themeName) {
           document.body.setAttribute('data-theme', themeName);
           localStorage.setItem('selectedTheme', themeName);
         }
 
-        function loadTheme() {
-          const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-          setTheme(savedTheme);
-          const themeSelector = document.getElementById('theme-selector');
-          if (themeSelector) {
-            themeSelector.value = savedTheme;
+        // Load saved theme or use default
+        const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+        setTheme(savedTheme);
+        themeSelector.value = savedTheme;
+
+        themeSelector.addEventListener('change', e => setTheme(e.target.value));
+      }
+
+      // Font Size Control
+      function setupFontSizeControl() {
+        const slider = document.getElementById('font-size-slider');
+        const label = document.getElementById('font-size-label');
+        if (!slider || !label) return;
+
+        // Load saved font size or use default
+        const savedSize = localStorage.getItem('fontSizeValue') || '16';
+        document.body.style.fontSize = savedSize + 'px';
+        slider.value = savedSize;
+        label.textContent = savedSize + 'px';
+
+        slider.addEventListener('input', function() {
+          const newSize = this.value;
+          document.body.style.fontSize = newSize + 'px';
+          label.textContent = newSize + 'px';
+          localStorage.setItem('fontSizeValue', newSize);
+        });
+      }
+
+      // Code Beautifier
+      function setupCodeBeautifier() {
+        const input = document.getElementById("code-input");
+        const output = document.getElementById("beautified-output");
+        const beautifyBtn = document.getElementById("beautify-code");
+        const language = document.getElementById("code-language");
+
+        if (!input || !output || !beautifyBtn || !language) return;
+
+        function beautifyHTML(html) {
+          let formatted = '';
+          let indent = 0;
+          const tab = '    ';
+          
+          html.split(/>\s*</).forEach(element => {
+            if (element.match(/^\/\w/)) indent--;
+            formatted += tab.repeat(indent) + '<' + element + '>\n';
+            if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) indent++;
+          });
+          
+          return formatted.trim();
+        }
+
+        function beautifyCSS(css) {
+          return css
+            .replace(/\s*{\s*/g, ' {\n    ')
+            .replace(/;\s*/g, ';\n    ')
+            .replace(/\s*}\s*/g, '\n}\n\n')
+            .replace(/\n\s*\n/g, '\n')
+            .trim();
+        }
+
+        function beautifyJS(js) {
+          try {
+            return JSON.stringify(JSON.parse(js), null, 2);
+          } catch {
+            return js
+              .replace(/{\s*/g, '{\n    ')
+              .replace(/;\s*/g, ';\n    ')
+              .replace(/}\s*/g, '\n}\n\n')
+              .trim();
           }
         }
 
-        // Initialize theme
-        loadTheme();
+        beautifyBtn.addEventListener("click", () => {
+          try {
+            const code = input.value;
+            let formatted = code;
 
-        // Theme selector event listener
-        const themeSelector = document.getElementById('theme-selector');
-        if (themeSelector) {
-          themeSelector.addEventListener('change', (e) => {
-            setTheme(e.target.value);
-          });
-        }
-
-        toolContents.forEach((content) => (content.style.display = "none"));
-        homeContent.style.display = "block";
-
-        function showSection(sectionId) {
-          toolContents.forEach((content) => (content.style.display = "none"));
-          homeContent.style.display = "none";
-          const section = document.getElementById(sectionId);
-          if (section) {
-            section.style.display = "block";
-          }
-        }
-
-        sidebarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            const sectionId = this.dataset.section;
-            showSection(sectionId);
-          });
-        });
-
-        toolCards.forEach((card) => {
-          card.addEventListener("click", function () {
-            const sectionId = this.dataset.section;
-            showSection(sectionId);
-          });
-        });
-
-        backButton.addEventListener("click", function () {
-          toolContents.forEach((content) => (content.style.display = "none"));
-          homeContent.style.display = "block";
-        });
-
-        homeNav.addEventListener("click", function () {
-          toolContents.forEach((content) => (content.style.display = "none"));
-          homeContent.style.display = "block";
-        });
-
-        const textCaseInput = document.getElementById("text-case-input");
-        const textCaseOutput = document.getElementById("text-case-output");
-        const toUppercaseButton = document.getElementById("to-uppercase");
-        const toLowercaseButton = document.getElementById("to-lowercase");
-        const toTitlecaseButton = document.getElementById("to-titlecase");
-
-        toUppercaseButton.addEventListener("click", function () {
-          textCaseOutput.value = textCaseInput.value.toUpperCase();
-        });
-
-        toLowercaseButton.addEventListener("click", function () {
-          textCaseOutput.value = textCaseInput.value.toLowerCase();
-        });
-
-        toTitlecaseButton.addEventListener("click", function () {
-          const text = textCaseInput.value;
-          const titleCaseText = text.replace(/\w\S*/g, function (txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-          });
-          textCaseOutput.value = titleCaseText;
-        });
-
-        const generateUuidButton = document.getElementById("generate-uuid");
-        const uuidOutput = document.getElementById("uuid-output");
-
-        generateUuidButton.addEventListener("click", function () {
-          uuidOutput.value = generateUUID();
-        });
-
-        function generateUUID() {
-          return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-            /[xy]/g,
-            function (c) {
-              var r = (Math.random() * 16) | 0,
-                v = c == "x" ? r : (r & 0x3) | 0x8;
-              return v.toString(16);
+            switch(language.value) {
+              case 'html':
+                formatted = beautifyHTML(code);
+                break;
+              case 'css':
+                formatted = beautifyCSS(code);
+                break;
+              case 'javascript':
+                formatted = beautifyJS(code);
+                break;
             }
-          );
+
+            output.value = formatted;
+            output.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.value = "Error: " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
+        });
+      }
+
+      // Markdown Preview
+      function setupMarkdownPreview() {
+        const input = document.getElementById("markdown-input");
+        const preview = document.getElementById("markdown-preview");
+
+        if (!input || !preview) return;
+
+        function convertMarkdown(text) {
+          return text
+            .replace(/#{6}\s?([^\n]+)/g, '<h6>$1</h6>')
+            .replace(/#{5}\s?([^\n]+)/g, '<h5>$1</h5>')
+            .replace(/#{4}\s?([^\n]+)/g, '<h4>$1</h4>')
+            .replace(/#{3}\s?([^\n]+)/g, '<h3>$1</h3>')
+            .replace(/#{2}\s?([^\n]+)/g, '<h2>$1</h2>')
+            .replace(/#{1}\s?([^\n]+)/g, '<h1>$1</h1>')
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\n\n/g, '<br><br>')
+            .replace(/\n/g, '<br>');
         }
 
-        const jsonInput = document.getElementById("json-input");
-        const yamlOutput = document.getElementById("yaml-output");
-        const convertToYamlButton = document.getElementById("convert-to-yaml");
-
-        convertToYamlButton.addEventListener("click", function () {
-          try {
-            const json = JSON.parse(jsonInput.value);
-            yamlOutput.value = jsyaml.dump(json);
-          } catch (error) {
-            yamlOutput.value = "Error: Invalid JSON";
-          }
+        input.addEventListener('input', () => {
+          preview.innerHTML = convertMarkdown(input.value);
         });
+      }
 
-        const jsonFormatterInput = document.getElementById(
-          "json-formatter-input"
-        );
-        const jsonFormatterOutput = document.getElementById(
-          "json-formatter-output"
-        );
-        const formatJsonButton = document.getElementById("format-json");
+      // Email Validator
+      function setupEmailValidator() {
+        const input = document.getElementById("email-input");
+        const validateBtn = document.getElementById("validate-email");
+        const status = document.getElementById("email-validation-status");
 
-        formatJsonButton.addEventListener("click", function () {
-          try {
-            const json = JSON.parse(jsonFormatterInput.value);
-            const formattedJson = JSON.stringify(json, null, 2);
-            jsonFormatterOutput.value = formattedJson;
-          } catch (error) {
-            jsonFormatterOutput.value = "Error: Invalid JSON";
-          }
+        if (!input || !validateBtn || !status) return;
+
+        function isValidEmail(email) {
+          const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return regex.test(email);
+        }
+
+        validateBtn.addEventListener("click", () => {
+          const email = input.value.trim();
+          const isValid = isValidEmail(email);
+          
+          status.textContent = isValid ? "Valid email address" : "Invalid email address";
+          status.style.color = isValid ? "#10B981" : "#EF4444";
+          input.style.borderColor = isValid ? '#4B5563' : '#EF4444';
         });
+      }
 
-        const base64Input = document.getElementById("base64-input");
-        const base64Output = document.getElementById("base64-output");
-        const encodeBase64Button = document.getElementById("encode-base64");
-        const decodeBase64Button = document.getElementById("decode-base64");
+      // URL Validator
+      function setupUrlValidator() {
+        const input = document.getElementById("url-input");
+        const validateBtn = document.getElementById("validate-url");
+        const status = document.getElementById("url-validation-status");
 
-        encodeBase64Button.addEventListener("click", function () {
+        if (!input || !validateBtn || !status) return;
+
+        function isValidUrl(url) {
           try {
-            base64Output.value = btoa(base64Input.value);
-          } catch (error) {
-            base64Output.value = "Error: Encoding failed";
-          }
-        });
-
-        decodeBase64Button.addEventListener("click", function () {
-          try {
-            base64Output.value = atob(base64Input.value);
-          } catch (error) {
-            base64Output.value = "Error: Decoding failed";
-          }
-        });
-
-        const text1Input = document.getElementById("text1");
-        const text2Input = document.getElementById("text2");
-        const compareTextsButton = document.getElementById("compareTexts");
-        const comparisonOutput = document.getElementById("comparisonOutput");
-        console.log(compareTextsButton)
-
-        compareTextsButton.onclick = function (){
-          const text1 = document.getElementById("text1").value;
-          const text2 = document.getElementById("text2").value;
-
-          if(text1 == text2){
-            comparisonOutput.innerHTML = "Beraberdir"
-          }
-          else{
-            comparisonOutput.innerHTML = "Beraber Deyil"
+            new URL(url);
+            return true;
+          } catch {
+            return false;
           }
         }
 
-        const jsonValidatorInput = document.getElementById(
-          "json-validator-input"
-        );
-        const validateJsonButton = document.getElementById("validate-json");
-        const validationStatus = document.getElementById("validation-status");
-
-        validateJsonButton.addEventListener("click", function () {
-          try {
-            JSON.parse(jsonValidatorInput.value);
-            validationStatus.textContent = "Valid JSON";
-            validationStatus.style.color = "green";
-          } catch (error) {
-            validationStatus.textContent = "Invalid JSON: " + error.message;
-            validationStatus.style.color = "red";
-          }
+        validateBtn.addEventListener("click", () => {
+          const url = input.value.trim();
+          const isValid = isValidUrl(url);
+          
+          status.textContent = isValid ? "Valid URL" : "Invalid URL";
+          status.style.color = isValid ? "#10B981" : "#EF4444";
+          input.style.borderColor = isValid ? '#4B5563' : '#EF4444';
         });
+      }
 
-        const imageInput = document.getElementById("image-input");
-        const convertToJpgButton = document.getElementById("convert-to-jpg");
-        const imageCanvas = document.getElementById("image-canvas");
-        const downloadLink = document.getElementById("download-link");
-        const ctx = imageCanvas.getContext("2d");
+      // Image to Base64 Converter
+      function setupImageConverter() {
+        const input = document.getElementById("image-base64-input");
+        const output = document.getElementById("base64-image-output");
+        const convertBtn = document.getElementById("convert-to-base64");
 
-        convertToJpgButton.addEventListener("click", function() {
-          const file = imageInput.files[0];
+        if (!input || !output || !convertBtn) return;
+
+        convertBtn.addEventListener("click", () => {
+          const file = input.files[0];
           if (!file) {
-            alert("Please select a PNG image first.");
+            output.value = "Please select an image first";
+            output.style.borderColor = '#EF4444';
             return;
           }
 
           const reader = new FileReader();
-          reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-              // Set canvas dimensions to match image
-              imageCanvas.width = img.width;
-              imageCanvas.height = img.height;
-              
-              // Draw image on canvas
-              ctx.drawImage(img, 0, 0);
-              
-              // Convert to JPG
-              try {
-                const jpgDataUrl = imageCanvas.toDataURL("image/jpeg", 0.9);
-                downloadLink.href = jpgDataUrl;
-                downloadLink.download = file.name.replace(/\.png$/i, ".jpg");
-                downloadLink.classList.remove("hidden");
-              } catch (error) {
-                alert("Error converting image: " + error.message);
-              }
-            };
-            img.src = e.target.result;
+          reader.onload = (e) => {
+            try {
+              output.value = e.target.result;
+              output.style.borderColor = '#4B5563';
+            } catch (error) {
+              output.value = "Error: " + error.message;
+              output.style.borderColor = '#EF4444';
+            }
+          };
+          reader.onerror = () => {
+            output.value = "Error reading file";
+            output.style.borderColor = '#EF4444';
           };
           reader.readAsDataURL(file);
         });
+      }
 
-        const regexInput = document.getElementById("regex-input");
-        const testStringInput = document.getElementById("test-string");
-        const testRegexButton = document.getElementById("test-regex");
-        const regexMatch = document.getElementById("regex-match");
+      // CSV ↔ JSON Converter
+      function setupCsvJsonConverter() {
+        const csvInput = document.getElementById("csv-input");
+        const jsonOutput = document.getElementById("csv-json-output");
+        const toJsonBtn = document.getElementById("csv-to-json");
+        const toCsvBtn = document.getElementById("json-to-csv");
 
-        testRegexButton.addEventListener("click", function() {
-          try {
-            const regex = new RegExp(regexInput.value);
-            const testResult = regex.test(testStringInput.value);
-            regexMatch.textContent = testResult ? "Match Found" : "No Match";
-            regexMatch.className = testResult ? "font-medium text-green-400" : "font-medium text-red-400";
-          } catch (error) {
-            regexMatch.textContent = "Invalid Regex: " + error.message;
-            regexMatch.className = "font-medium text-red-400";
-          }
-        });
+        if (!csvInput || !jsonOutput || !toJsonBtn || !toCsvBtn) return;
 
-        const darkModeToggle = document.getElementById("dark-mode-toggle");
-        const body = document.body;
-        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        function parseCSV(csv) {
+          const lines = csv.trim().split(/\r\n|\n/);
+          const headers = lines[0].split(',').map(header => header.trim());
+          const result = [];
 
-        // Set initial dark mode state
-        if (isDarkMode) {
-          body.classList.add("dark-mode");
-          darkModeToggle.checked = true;
-        }
+          for (let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            const obj = {};
+            let currentLine = lines[i];
+            let values = [];
+            let inQuotes = false;
+            let currentValue = '';
 
-        darkModeToggle.addEventListener("change", function() {
-          if (this.checked) {
-            body.classList.add("dark-mode");
-            localStorage.setItem("darkMode", "true");
-          } else {
-            body.classList.remove("dark-mode");
-            localStorage.setItem("darkMode", "false");
-          }
-        });
-
-        const searchInput = document.getElementById("search-input");
-        searchInput.addEventListener("input", function () {
-          const searchTerm = searchInput.value.toLowerCase();
-          const sidebarItems = document.querySelectorAll(".sidebar-item");
-          const toolCards = document.querySelectorAll("[data-section]");
-          
-          // Search in sidebar items
-          sidebarItems.forEach((item) => {
-            const itemText = item.textContent.toLowerCase();
-            const shouldShow = itemText.includes(searchTerm);
-            item.style.display = shouldShow ? "flex" : "none";
-          });
-
-          // Search in tool cards
-          toolCards.forEach((card) => {
-            if (card.classList.contains("tool-content")) return; // Skip tool sections
-            const cardText = card.textContent.toLowerCase();
-            const shouldShow = cardText.includes(searchTerm);
-            card.style.display = shouldShow ? "block" : "none";
-          });
-        });
-
-        // Support Development Section
-        const supportSection = document.querySelector('[data-section="support-development-section"]');
-        if (supportSection) {
-          document.querySelector('li.sidebar-item i.fa-heart').parentElement.addEventListener("click", function() {
-            toolContents.forEach(content => content.style.display = "none");
-            homeContent.style.display = "none";
-            document.getElementById("support-development-section").style.display = "block";
-          });
-        }
-
-        // Extensions Management
-        const extensionButtons = document.querySelectorAll('[id^="extension-"]');
-        extensionButtons.forEach(button => {
-          button.addEventListener("click", function() {
-            const action = this.textContent.trim().toLowerCase();
-            const extensionCard = this.closest(".extension-card");
-            const extensionName = extensionCard.querySelector("h4").textContent;
-
-            if (action === "uninstall") {
-              if (confirm(`Are you sure you want to uninstall ${extensionName}?`)) {
-                extensionCard.remove();
+            for (let char of currentLine) {
+              if (char === '"') {
+                inQuotes = !inQuotes;
+              } else if (char === ',' && !inQuotes) {
+                values.push(currentValue.trim());
+                currentValue = '';
+              } else {
+                currentValue += char;
               }
-            } else if (action === "install") {
-              this.textContent = "Installing...";
-              this.disabled = true;
-              // Simulate installation
-              setTimeout(() => {
-                this.textContent = "Uninstall";
-                this.classList.remove("bg-purple-500", "hover:bg-purple-600");
-                this.classList.add("bg-red-500", "hover:bg-red-600");
-                this.disabled = false;
-              }, 1500);
             }
+            values.push(currentValue.trim());
+
+            headers.forEach((header, index) => {
+              obj[header] = values[index] || '';
+            });
+            result.push(obj);
+          }
+          return result;
+        }
+
+        function jsonToCSV(jsonData) {
+          try {
+            const items = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+            if (!Array.isArray(items) || !items.length) return '';
+            
+            const headers = Object.keys(items[0]);
+            const csvRows = [];
+            
+            csvRows.push(headers.join(','));
+            
+            items.forEach(item => {
+              const values = headers.map(header => {
+                const value = item[header] || '';
+                return value.includes(',') || value.includes('"') 
+                  ? `"${value.replace(/"/g, '""')}"` 
+                  : value;
+              });
+              csvRows.push(values.join(','));
+            });
+            
+            return csvRows.join('\n');
+          } catch (error) {
+            throw new Error('Invalid JSON format');
+          }
+        }
+
+        toJsonBtn.addEventListener("click", () => {
+          try {
+            const json = parseCSV(csvInput.value);
+            jsonOutput.value = JSON.stringify(json, null, 2);
+            jsonOutput.style.borderColor = '#4B5563';
+          } catch (error) {
+            jsonOutput.value = "Error: " + error.message;
+            jsonOutput.style.borderColor = '#EF4444';
+          }
+        });
+
+        toCsvBtn.addEventListener("click", () => {
+          try {
+            const csv = jsonToCSV(jsonOutput.value);
+            csvInput.value = csv;
+            csvInput.style.borderColor = '#4B5563';
+          } catch (error) {
+            csvInput.value = "Error: " + error.message;
+            csvInput.style.borderColor = '#EF4444';
+          }
+        });
+      }
+
+      // Lorem Ipsum Generator
+      function setupLoremIpsumGenerator() {
+        const paragraphsInput = document.getElementById("lorem-paragraphs");
+        const wordsInput = document.getElementById("lorem-words");
+        const output = document.getElementById("lorem-output");
+        const generateBtn = document.getElementById("generate-lorem");
+
+        if (!paragraphsInput || !wordsInput || !output || !generateBtn) return;
+
+        const loremWordsList = [
+          "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+          "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
+          "magna", "aliqua", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation",
+          "ullamco", "laboris", "nisi", "ut", "aliquip", "ex", "ea", "commodo", "consequat",
+          "duis", "aute", "irure", "dolor", "in", "reprehenderit", "in", "voluptate", "velit",
+          "esse", "cillum", "dolore", "eu", "fugiat", "nulla", "pariatur", "excepteur", "sint",
+          "occaecat", "cupidatat", "non", "proident", "sunt", "in", "culpa", "qui", "officia",
+          "deserunt", "mollit", "anim", "id", "est", "laborum", "sed", "perspiciatis", "unde",
+          "omnis", "iste", "natus", "error", "voluptatem", "accusantium", "doloremque", "laudantium",
+          "totam", "rem", "aperiam", "eaque", "ipsa", "quae", "ab", "illo", "inventore", "veritatis",
+          "quasi", "architecto", "beatae", "vitae", "dicta", "explicabo", "nemo", "ipsam",
+          "voluptatem", "quia", "voluptas", "aspernatur", "aut", "odit", "fugit", "consequuntur",
+          "magni", "dolores", "eos", "ratione", "sequi", "nesciunt", "neque", "porro", "quisquam"
+        ];
+
+        function generateSentence(wordCount) {
+          const words = [];
+          for (let i = 0; i < wordCount; i++) {
+            words.push(loremWordsList[Math.floor(Math.random() * loremWordsList.length)]);
+          }
+          words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+          return words.join(' ') + '.';
+        }
+
+        function generateParagraph(wordCount) {
+          const sentenceCount = Math.ceil(wordCount / 15); // Average 15 words per sentence
+          const sentences = [];
+          let remainingWords = wordCount;
+
+          for (let i = 0; i < sentenceCount; i++) {
+            const wordsInSentence = i === sentenceCount - 1 ? 
+              remainingWords : 
+              Math.min(Math.floor(Math.random() * 10) + 10, remainingWords);
+            sentences.push(generateSentence(wordsInSentence));
+            remainingWords -= wordsInSentence;
+          }
+
+          return sentences.join(' ');
+        }
+
+        generateBtn.addEventListener("click", () => {
+          try {
+            const numParagraphs = Math.max(1, Math.min(10, parseInt(paragraphsInput.value) || 3));
+            const wordsPerParagraph = Math.max(10, Math.min(100, parseInt(wordsInput.value) || 50));
+            
+            const paragraphs = Array.from({ length: numParagraphs }, () => 
+              generateParagraph(wordsPerParagraph)
+            );
+
+            output.value = paragraphs.join('\n\n');
+            output.style.borderColor = '#4B5563';
+            
+            // Update input values with sanitized numbers
+            paragraphsInput.value = numParagraphs;
+            wordsInput.value = wordsPerParagraph;
+          } catch (error) {
+            output.value = "Error generating Lorem Ipsum text: " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
+        });
+
+        // Add input validation
+        function validateNumberInput(input, min, max) {
+          input.addEventListener('input', () => {
+            let value = parseInt(input.value) || 0;
+            value = Math.max(min, Math.min(max, value));
+            input.value = value || '';
           });
+        }
+
+        validateNumberInput(paragraphsInput, 1, 10);
+        validateNumberInput(wordsInput, 10, 100);
+      }
+
+      // Hash Generator
+      function setupHashGenerator() {
+        const input = document.getElementById("hash-input");
+        const output = document.getElementById("hash-output");
+        const md5Btn = document.getElementById("generate-md5");
+        const sha1Btn = document.getElementById("generate-sha1");
+        const sha256Btn = document.getElementById("generate-sha256");
+
+        if (!input || !output || !md5Btn || !sha1Btn || !sha256Btn) return;
+
+        // MD5 implementation
+        function md5(string) {
+          function md5cycle(x, k) {
+            let a = x[0], b = x[1], c = x[2], d = x[3];
+
+            a = ff(a, b, c, d, k[0], 7, -680876936);
+            d = ff(d, a, b, c, k[1], 12, -389564586);
+            c = ff(c, d, a, b, k[2], 17, 606105819);
+            b = ff(b, c, d, a, k[3], 22, -1044525330);
+            a = ff(a, b, c, d, k[4], 7, -176418897);
+            d = ff(d, a, b, c, k[5], 12, 1200080426);
+            c = ff(c, d, a, b, k[6], 17, -1473231341);
+            b = ff(b, c, d, a, k[7], 22, -45705983);
+            a = ff(a, b, c, d, k[8], 7, 1770035416);
+            d = ff(d, a, b, c, k[9], 12, -1958414417);
+            c = ff(c, d, a, b, k[10], 17, -42063);
+            b = ff(b, c, d, a, k[11], 22, -1990404162);
+            a = ff(a, b, c, d, k[12], 7, 1804603682);
+            d = ff(d, a, b, c, k[13], 12, -40341101);
+            c = ff(c, d, a, b, k[14], 17, -1502002290);
+            b = ff(b, c, d, a, k[15], 22, 1236535329);
+
+            a = gg(a, b, c, d, k[1], 5, -165796510);
+            d = gg(d, a, b, c, k[6], 9, -1069501632);
+            c = gg(c, d, a, b, k[11], 14, 643717713);
+            b = gg(b, c, d, a, k[0], 20, -373897302);
+            a = gg(a, b, c, d, k[5], 5, -701558691);
+            d = gg(d, a, b, c, k[10], 9, 38016083);
+            c = gg(c, d, a, b, k[15], 14, -660478335);
+            b = gg(b, c, d, a, k[4], 20, -405537848);
+            a = gg(a, b, c, d, k[9], 5, 568446438);
+            d = gg(d, a, b, c, k[14], 9, -1019803690);
+            c = gg(c, d, a, b, k[3], 14, -187363961);
+            b = gg(b, c, d, a, k[8], 20, 1163531501);
+            a = gg(a, b, c, d, k[13], 5, -1444681467);
+            d = gg(d, a, b, c, k[2], 9, -51403784);
+            c = gg(c, d, a, b, k[7], 14, 1735328473);
+            b = gg(b, c, d, a, k[12], 20, -1926607734);
+
+            a = hh(a, b, c, d, k[5], 4, -378558);
+            d = hh(d, a, b, c, k[8], 11, -2022574463);
+            c = hh(c, d, a, b, k[11], 16, 1839030562);
+            b = hh(b, c, d, a, k[14], 23, -35309556);
+            a = hh(a, b, c, d, k[1], 4, -1530992060);
+            d = hh(d, a, b, c, k[4], 11, 1272893353);
+            c = hh(c, d, a, b, k[7], 16, -155497632);
+            b = hh(b, c, d, a, k[10], 23, -1094730640);
+            a = hh(a, b, c, d, k[13], 4, 681279174);
+            d = hh(d, a, b, c, k[0], 11, -358537222);
+            c = hh(c, d, a, b, k[3], 16, -722521979);
+            b = hh(b, c, d, a, k[6], 23, 76029189);
+            a = hh(a, b, c, d, k[9], 4, -640364487);
+            d = hh(d, a, b, c, k[12], 11, -421815835);
+            c = hh(c, d, a, b, k[15], 16, 530742520);
+            b = hh(b, c, d, a, k[2], 23, -995338651);
+
+            a = ii(a, b, c, d, k[0], 6, -198630844);
+            d = ii(d, a, b, c, k[7], 10, 1126891415);
+            c = ii(c, d, a, b, k[14], 15, -1416354905);
+            b = ii(b, c, d, a, k[5], 21, -57434055);
+            a = ii(a, b, c, d, k[12], 6, 1700485571);
+            d = ii(d, a, b, c, k[3], 10, -1894986606);
+            c = ii(c, d, a, b, k[10], 15, -1051523);
+            b = ii(b, c, d, a, k[1], 21, -2054922799);
+            a = ii(a, b, c, d, k[8], 6, 1873313359);
+            d = ii(d, a, b, c, k[15], 10, -30611744);
+            c = ii(c, d, a, b, k[6], 15, -1560198380);
+            b = ii(b, c, d, a, k[13], 21, 1309151649);
+            a = ii(a, b, c, d, k[4], 6, -145523070);
+            d = ii(d, a, b, c, k[11], 10, -1120210379);
+            c = ii(c, d, a, b, k[2], 15, 718787259);
+            b = ii(b, c, d, a, k[9], 21, -343485551);
+
+            x[0] = add32(a, x[0]);
+            x[1] = add32(b, x[1]);
+            x[2] = add32(c, x[2]);
+            x[3] = add32(d, x[3]);
+          }
+
+          function cmn(q, a, b, x, s, t) {
+            a = add32(add32(a, q), add32(x, t));
+            return add32((a << s) | (a >>> (32 - s)), b);
+          }
+
+          function ff(a, b, c, d, x, s, t) {
+            return cmn((b & c) | ((~b) & d), a, b, x, s, t);
+          }
+
+          function gg(a, b, c, d, x, s, t) {
+            return cmn((b & d) | (c & (~d)), a, b, x, s, t);
+          }
+
+          function hh(a, b, c, d, x, s, t) {
+            return cmn(b ^ c ^ d, a, b, x, s, t);
+          }
+
+          function ii(a, b, c, d, x, s, t) {
+            return cmn(c ^ (b | (~d)), a, b, x, s, t);
+          }
+
+          function md51(s) {
+            const n = s.length;
+            const state = [1732584193, -271733879, -1732584194, 271733878];
+            let i;
+            for (i = 64; i <= s.length; i += 64) {
+              md5cycle(state, md5blk(s.substring(i - 64, i)));
+            }
+            s = s.substring(i - 64);
+            const tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            for (i = 0; i < s.length; i++)
+              tail[i >> 2] |= s.charCodeAt(i) << ((i % 4) << 3);
+            tail[i >> 2] |= 0x80 << ((i % 4) << 3);
+            if (i > 55) {
+              md5cycle(state, tail);
+              for (i = 0; i < 16; i++) tail[i] = 0;
+            }
+            tail[14] = n * 8;
+            md5cycle(state, tail);
+            return state;
+          }
+
+          function md5blk(s) {
+            const md5blks = [];
+            for (let i = 0; i < 64; i += 4) {
+              md5blks[i >> 2] = s.charCodeAt(i) +
+                (s.charCodeAt(i + 1) << 8) +
+                (s.charCodeAt(i + 2) << 16) +
+                (s.charCodeAt(i + 3) << 24);
+            }
+            return md5blks;
+          }
+
+          const hex_chr = '0123456789abcdef'.split('');
+
+          function rhex(n) {
+            let s = '', j = 0;
+            for (; j < 4; j++)
+              s += hex_chr[(n >> (j * 8 + 4)) & 0x0F] +
+                   hex_chr[(n >> (j * 8)) & 0x0F];
+            return s;
+          }
+
+          function hex(x) {
+            for (let i = 0; i < x.length; i++)
+              x[i] = rhex(x[i]);
+            return x.join('');
+          }
+
+          function add32(a, b) {
+            return (a + b) & 0xFFFFFFFF;
+          }
+
+          return hex(md51(string));
+        }
+
+        // SHA-1 implementation
+        async function sha1(message) {
+          const msgBuffer = new TextEncoder().encode(message);
+          const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // SHA-256 implementation
+        async function sha256(message) {
+          const msgBuffer = new TextEncoder().encode(message);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        md5Btn.addEventListener("click", () => {
+          try {
+            const hash = md5(input.value);
+            output.value = hash;
+            output.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.value = "Error generating MD5 hash: " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
         });
 
-        // Simple Font Size Control
-        const fontSizeSlider = document.getElementById('font-size-slider');
-        const fontSizeLabel = document.getElementById('font-size-label');
-
-        // Load saved font size or use default
-        const savedFontSize = localStorage.getItem('fontSizeValue') || '16';
-        document.body.style.fontSize = savedFontSize + 'px';
-        fontSizeSlider.value = savedFontSize;
-        fontSizeLabel.textContent = savedFontSize + 'px';
-
-        // Update font size when slider changes
-        fontSizeSlider.addEventListener('input', function() {
-          const newSize = this.value;
-          document.body.style.fontSize = newSize + 'px';
-          fontSizeLabel.textContent = newSize + 'px';
-          localStorage.setItem('fontSizeValue', newSize);
+        sha1Btn.addEventListener("click", async () => {
+          try {
+            const hash = await sha1(input.value);
+            output.value = hash;
+            output.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.value = "Error generating SHA-1 hash: " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
         });
-      });
+
+        sha256Btn.addEventListener("click", async () => {
+          try {
+            const hash = await sha256(input.value);
+            output.value = hash;
+            output.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.value = "Error generating SHA-256 hash: " + error.message;
+            output.style.borderColor = '#EF4444';
+          }
+        });
+      }
     </script>
   </body>
-</html>
+</html>   
