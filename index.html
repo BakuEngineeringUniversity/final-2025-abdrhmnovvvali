@@ -12,7 +12,6 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/diff/5.1.0/diff.min.js"></script>
-    <!-- Include FileSaver.js for saving images -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
       integrity="sha512-Qlv6VSKh1stc/nLKjCwiYdSSZr1hOQvYdVN2CvMRsKbKn3x2ZWIiERvErnUwpdGaq93GIWLNmZQqW+YjwWS2jw=="
@@ -45,7 +44,6 @@
         display: none;
       }
 
-      /* Dark Mode Styles */
       body.dark-mode {
         background-color: #333;
         color: #fff;
@@ -391,14 +389,12 @@
           </div>
         </div>
 
-        <!-- Converters Section -->
         <section id="converters-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Converters</h2>
           <p class="text-gray-300">
             Tools for converting between different data formats.
           </p>
 
-          <!-- JSON to YAML Converter -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               JSON to YAML Converter
@@ -421,17 +417,14 @@
               readonly
             ></textarea>
           </div>
-          <!-- Add more converters here -->
         </section>
 
-        <!-- Encoders / Decoders Section -->
         <section id="encoders-decoders-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">
             Encoders / Decoders
           </h2>
           <p class="text-gray-300">Tools for encoding and decoding data.</p>
 
-          <!-- Base64 Encoder/Decoder -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               Base64 Encoder/Decoder
@@ -462,15 +455,12 @@
               readonly
             ></textarea>
           </div>
-          <!-- Add more encoders/decoders here -->
         </section>
 
-        <!-- Formatters Section -->
         <section id="formatters-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Formatters</h2>
           <p class="text-gray-300">Tools for formatting code and data.</p>
 
-          <!-- JSON Formatter -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               JSON Formatter
@@ -493,17 +483,14 @@
               readonly
             ></textarea>
           </div>
-          <!-- Add more formatters here -->
         </section>
 
-        <!-- Generators Section -->
         <section id="generators-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Generators</h2>
           <p class="text-gray-300">
             Tools for generating various types of data.
           </p>
 
-          <!-- UUID Generator -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               UUID Generator
@@ -522,15 +509,12 @@
               readonly
             />
           </div>
-          <!-- Add more generators here -->
         </section>
 
-        <!-- Graphic Section -->
         <section id="graphic-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Graphic</h2>
           <p class="text-gray-300">Tools for graphic manipulation.</p>
 
-          <!-- Image Converter -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               Image Converter (PNG to JPG)
@@ -554,14 +538,12 @@
           </div>
         </section>
 
-        <!-- Testers Section -->
         <section id="testers-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Testers</h2>
           <p class="text-gray-300">
             Tools for testing different functionalities.
           </p>
 
-          <!-- Regex Tester -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">Regex Tester</h3>
             <input
@@ -585,12 +567,10 @@
           </div>
         </section>
 
-        <!-- Text Section -->
         <section id="text-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Text Tools</h2>
           <p class="text-gray-300">Various tools for manipulating text.</p>
 
-          <!-- Text Case Converter -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               Text Case Converter
@@ -627,15 +607,12 @@
               readonly
             ></textarea>
           </div>
-          <!-- Add more text tools here -->
         </section>
 
-        <!-- Compare Section -->
         <section id="compare-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Compare</h2>
           <p class="text-gray-300">Tools for comparing text or data.</p>
 
-          <!-- Text Diff -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">Text Diff</h3>
             <div class="flex">
@@ -663,12 +640,10 @@
           </div>
         </section>
 
-        <!-- Validators Section -->
         <section id="validators-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Validators</h2>
           <p class="text-gray-300">Tools for validating data formats.</p>
 
-          <!-- JSON Validator -->
           <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 mb-4">
             <h3 class="text-lg font-semibold text-white mb-2">
               JSON Validator
@@ -690,7 +665,6 @@
           </div>
         </section>
 
-        <!-- Manage Extensions Section -->
         <section id="manage-extensions-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Manage Extensions</h2>
           <p class="text-gray-300">Manage and install extensions.</p>
@@ -700,12 +674,10 @@
           </p>
         </section>
 
-        <!-- Settings Section -->
         <section id="settings-section" class="tool-content p-6">
           <h2 class="text-2xl font-bold text-white mb-4">Settings</h2>
           <p class="text-gray-300">Customize the application.</p>
 
-          <!-- Dark Mode Toggle -->
           <div class="flex items-center mb-4">
             <label for="dark-mode-toggle" class="mr-2 text-white"
               >Dark Mode:</label
@@ -722,7 +694,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // --- Navigation ---
         const sidebarItems = document.querySelectorAll(".sidebar-item");
         const toolCards = document.querySelectorAll(".transition");
         const toolContents = document.querySelectorAll(".tool-content");
@@ -766,7 +737,6 @@
           homeContent.style.display = "block";
         });
 
-        // --- Text Case Converter ---
         const textCaseInput = document.getElementById("text-case-input");
         const textCaseOutput = document.getElementById("text-case-output");
         const toUppercaseButton = document.getElementById("to-uppercase");
@@ -789,7 +759,6 @@
           textCaseOutput.value = titleCaseText;
         });
 
-        // --- UUID Generator ---
         const generateUuidButton = document.getElementById("generate-uuid");
         const uuidOutput = document.getElementById("uuid-output");
 
@@ -808,7 +777,6 @@
           );
         }
 
-        // --- JSON to YAML Converter ---
         const jsonInput = document.getElementById("json-input");
         const yamlOutput = document.getElementById("yaml-output");
         const convertToYamlButton = document.getElementById("convert-to-yaml");
@@ -822,7 +790,6 @@
           }
         });
 
-        // --- JSON Formatter ---
         const jsonFormatterInput = document.getElementById(
           "json-formatter-input"
         );
@@ -841,7 +808,6 @@
           }
         });
 
-        // --- Base64 Encoder/Decoder ---
         const base64Input = document.getElementById("base64-input");
         const base64Output = document.getElementById("base64-output");
         const encodeBase64Button = document.getElementById("encode-base64");
@@ -863,7 +829,6 @@
           }
         });
 
-   // --- Text Diff ---
 const text1Input = document.getElementById("text1");
 const text2Input = document.getElementById("text2");
 const compareTextsButton = document.getElementById("compareTexts");
@@ -903,7 +868,6 @@ function compareTexts() {
 }
 */
 
-        // --- JSON Validator ---
         const jsonValidatorInput = document.getElementById(
           "json-validator-input"
         );
@@ -921,7 +885,6 @@ function compareTexts() {
           }
         });
 
-        // --- Image Converter (PNG to JPG) ---
         const imageInput = document.getElementById("image-input");
         const convertToJpgButton = document.getElementById("convert-to-jpg");
         const imageCanvas = document.getElementById("image-canvas");
@@ -951,7 +914,6 @@ function compareTexts() {
           }
         });
 
-        // --- Regex Tester ---
         const regexInput = document.getElementById("regex-input");
         const testStringInput = document.getElementById("test-string");
         const testRegexButton = document.getElementById("test-regex");
@@ -968,22 +930,20 @@ function compareTexts() {
           }
         });
 
-        // --- Dark Mode Toggle ---
         const darkModeToggle = document.getElementById("dark-mode-toggle");
         darkModeToggle.addEventListener("change", function () {
           document.body.classList.toggle("dark-mode");
         });
 
-        // --- Search Functionality ---
         const searchInput = document.getElementById("search-input");
         searchInput.addEventListener("input", function () {
           const searchTerm = searchInput.value.toLowerCase();
           sidebarItems.forEach((item) => {
             const itemText = item.textContent.toLowerCase();
             if (itemText.includes(searchTerm)) {
-              item.style.display = ""; // Show the item
+              item.style.display = ""; 
             } else {
-              item.style.display = "none"; // Hide the item
+              item.style.display = "none"; 
             }
           });
         });
