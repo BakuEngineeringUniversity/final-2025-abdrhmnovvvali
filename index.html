@@ -917,6 +917,8 @@
         setupLoremIpsumGenerator();
         
         setupHashGenerator();
+        setupJsonYamlConverter();
+        setupRegexTester();
       });
 
       function setupNavigation() {
@@ -1260,20 +1262,78 @@
         if (!text1 || !text2 || !compareBtn || !output) return;
 
         compareBtn.addEventListener("click", () => {
-          if (text1.value === text2.value) {
-            output.innerHTML = "The texts are identical";
-            return;
-          }
+          try {
+            const str1 = text1.value;
+            const str2 = text2.value;
 
-          const diffs = Diff.diffChars(text1.value, text2.value);
-          const diffHtml = diffs.map(part => {
-            const color = part.added ? 'text-green-500' : 
-                         part.removed ? 'text-red-500' : 
-                         'text-gray-100';
-            return `<span class="${color}">${part.value}</span>`;
-          }).join('');
-          
-          output.innerHTML = diffHtml;
+            if (!str1 && !str2) {
+              output.innerHTML = '<span class="text-gray-400">Both texts are empty</span>';
+              return;
+            }
+
+            if (str1 === str2) {
+              output.innerHTML = '<span class="text-green-500">The texts are identical</span>';
+              return;
+            }
+
+            // Split the texts into lines for line-by-line comparison
+            const lines1 = str1.split('\n');
+            const lines2 = str2.split('\n');
+
+            // Create line-by-line diff
+            const diff = Diff.diffLines(str1, str2);
+            
+            let htmlOutput = '<div class="space-y-2">';
+            
+            diff.forEach((part) => {
+              // Create the HTML class and prefix based on the type of change
+              const className = part.added ? 'text-green-500' : 
+                               part.removed ? 'text-red-500' : 
+                               'text-gray-100';
+              const prefix = part.added ? '+ ' : 
+                            part.removed ? '- ' : 
+                            '  ';
+                            
+              // Split the part's value into lines and add them to output
+              const lines = part.value.split('\n')
+                .filter(line => line.length > 0) // Remove empty lines
+                .map(line => {
+                  return `<div class="font-mono ${className}">${prefix}${line.replace(/ /g, '&nbsp;')}</div>`;
+                })
+                .join('');
+                
+              htmlOutput += lines;
+            });
+            
+            htmlOutput += '</div>';
+            
+            // Add a summary at the top
+            const summary = `<div class="mb-4">
+              <span class="text-gray-100">Changes found:</span>
+              <span class="text-red-500 ml-2">- Deletions</span>
+              <span class="text-green-500 ml-2">+ Additions</span>
+            </div>`;
+            
+            output.innerHTML = summary + htmlOutput;
+
+            // Reset borders
+            text1.style.borderColor = '#4B5563';
+            text2.style.borderColor = '#4B5563';
+          } catch (error) {
+            output.innerHTML = `<span class="text-red-500">Error comparing texts: ${error.message}</span>`;
+            text1.style.borderColor = '#EF4444';
+            text2.style.borderColor = '#EF4444';
+          }
+        });
+
+        // Add input event listeners for real-time validation
+        [text1, text2].forEach(textarea => {
+          textarea.addEventListener('input', () => {
+            textarea.style.borderColor = '#4B5563';
+            if (output.innerHTML.includes('Error')) {
+              output.innerHTML = '<span class="text-gray-400">Click "Compare Texts" to see differences</span>';
+            }
+          });
         });
       }
 
@@ -1469,35 +1529,128 @@
       }
 
       function setupImageConverter() {
-        const input = document.getElementById("image-base64-input");
-        const output = document.getElementById("base64-image-output");
-        const convertBtn = document.getElementById("convert-to-base64");
+        const input = document.getElementById("image-input");
+        const canvas = document.getElementById("image-canvas");
+        const convertBtn = document.getElementById("convert-to-jpg");
+        const downloadLink = document.getElementById("download-link");
 
-        if (!input || !output || !convertBtn) return;
+        if (!input || !canvas || !convertBtn || !downloadLink) return;
 
-        convertBtn.addEventListener("click", () => {
-          const file = input.files[0];
+        // Hide canvas by default but keep it in the DOM for conversion
+        canvas.style.display = 'none';
+
+        function handleImageConversion(file) {
           if (!file) {
-            output.value = "Please select an image first";
-            output.style.borderColor = '#EF4444';
+            alert('Please select an image first');
+            return;
+          }
+
+          if (!file.type.match('image/png')) {
+            alert('Please select a PNG image');
             return;
           }
 
           const reader = new FileReader();
-          reader.onload = (e) => {
-            try {
-              output.value = e.target.result;
-              output.style.borderColor = '#4B5563';
-            } catch (error) {
-              output.value = "Error: " + error.message;
-              output.style.borderColor = '#EF4444';
-            }
-          };
-          reader.onerror = () => {
-            output.value = "Error reading file";
-            output.style.borderColor = '#EF4444';
+          reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+              // Set canvas dimensions to match image
+              canvas.width = img.width;
+              canvas.height = img.height;
+
+              // Draw image on canvas
+              const ctx = canvas.getContext('2d');
+              ctx.fillStyle = 'white'; // Set white background
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ctx.drawImage(img, 0, 0);
+
+              try {
+                // Convert to JPG
+                const jpgData = canvas.toDataURL('image/jpeg', 0.9);
+                
+                // Setup download link
+                downloadLink.href = jpgData;
+                downloadLink.download = file.name.replace('.png', '.jpg');
+                downloadLink.classList.remove('hidden');
+                
+                // Show preview
+                const previewImg = document.createElement('img');
+                previewImg.src = jpgData;
+                previewImg.className = 'mt-4 max-w-full h-auto rounded-lg shadow-lg';
+                
+                // Remove any existing preview
+                const existingPreview = document.querySelector('.preview-image');
+                if (existingPreview) {
+                  existingPreview.remove();
+                }
+                
+                // Add preview class for future reference
+                previewImg.classList.add('preview-image');
+                
+                // Insert preview before download link
+                downloadLink.parentNode.insertBefore(previewImg, downloadLink);
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'text-green-500 mt-2';
+                successMsg.textContent = 'Conversion successful! Click the button below to download.';
+                downloadLink.parentNode.insertBefore(successMsg, downloadLink);
+                
+              } catch (error) {
+                console.error('Conversion error:', error);
+                alert('Error converting image: ' + error.message);
+              }
+            };
+            img.src = e.target.result;
           };
           reader.readAsDataURL(file);
+        }
+
+        // Handle file selection
+        input.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            // Reset UI
+            downloadLink.classList.add('hidden');
+            const existingPreview = document.querySelector('.preview-image');
+            if (existingPreview) {
+              existingPreview.remove();
+            }
+          }
+        });
+
+        // Handle convert button click
+        convertBtn.addEventListener('click', () => {
+          const file = input.files[0];
+          handleImageConversion(file);
+        });
+
+        // Handle drag and drop
+        const dropZone = document.createElement('div');
+        dropZone.className = 'border-2 border-dashed border-gray-400 rounded-lg p-8 text-center mt-4 hover:border-purple-500 transition-colors';
+        dropZone.innerHTML = '<p class="text-gray-400">Drag and drop a PNG image here</p>';
+        input.parentNode.insertBefore(dropZone, input.nextSibling);
+
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('border-purple-500');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('border-purple-500');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('border-purple-500');
+          const file = e.dataTransfer.files[0];
+          if (file && file.type === 'image/png') {
+            input.files = e.dataTransfer.files;
+            handleImageConversion(file);
+          } else {
+            alert('Please drop a PNG image file');
+          }
         });
       }
 
@@ -1880,6 +2033,94 @@
           } catch (error) {
             output.value = "Error generating SHA-256 hash: " + error.message;
             output.style.borderColor = '#EF4444';
+          }
+        });
+      }
+
+      function setupJsonYamlConverter() {
+        const jsonInput = document.getElementById("json-input");
+        const yamlOutput = document.getElementById("yaml-output");
+        const convertBtn = document.getElementById("convert-to-yaml");
+
+        if (!jsonInput || !yamlOutput || !convertBtn) return;
+
+        convertBtn.addEventListener("click", () => {
+          try {
+            // First parse the JSON to ensure it's valid
+            const jsonData = JSON.parse(jsonInput.value);
+            // Convert to YAML using js-yaml library
+            const yamlString = jsyaml.dump(jsonData, {
+              indent: 2,
+              lineWidth: -1,
+              noRefs: true,
+              sortKeys: false
+            });
+            yamlOutput.value = yamlString;
+            yamlOutput.style.borderColor = '#4B5563';
+          } catch (error) {
+            yamlOutput.value = "Error: " + error.message;
+            yamlOutput.style.borderColor = '#EF4444';
+          }
+        });
+      }
+
+      function setupRegexTester() {
+        const regexInput = document.getElementById("regex-input");
+        const testString = document.getElementById("test-string");
+        const testBtn = document.getElementById("test-regex");
+        const matchResult = document.getElementById("regex-match");
+
+        if (!regexInput || !testString || !testBtn || !matchResult) return;
+
+        testBtn.addEventListener("click", () => {
+          try {
+            // Get the regex pattern and test string
+            const pattern = regexInput.value;
+            const text = testString.value;
+
+            // Create a new RegExp object
+            const regex = new RegExp(pattern, 'g');
+
+            // Find all matches
+            const matches = [...text.matchAll(regex)];
+
+            if (matches.length > 0) {
+              // Create detailed match information
+              const matchInfo = matches.map((match, index) => {
+                return `Match ${index + 1}: "${match[0]}" at position ${match.index}`;
+              }).join('\n');
+
+              matchResult.innerHTML = `Found ${matches.length} match(es):\n${matchInfo}`;
+              matchResult.style.whiteSpace = 'pre-line';
+              matchResult.style.color = '#10B981'; // Success color
+            } else {
+              matchResult.textContent = 'No matches found';
+              matchResult.style.color = '#9CA3AF'; // Gray color
+            }
+
+            // Reset borders
+            regexInput.style.borderColor = '#4B5563';
+            testString.style.borderColor = '#4B5563';
+          } catch (error) {
+            matchResult.textContent = 'Invalid regular expression: ' + error.message;
+            matchResult.style.color = '#EF4444'; // Error color
+            regexInput.style.borderColor = '#EF4444';
+          }
+        });
+
+        // Add input event listeners for real-time validation
+        regexInput.addEventListener('input', () => {
+          try {
+            if (regexInput.value) {
+              new RegExp(regexInput.value);
+              regexInput.style.borderColor = '#4B5563';
+              matchResult.textContent = 'Valid regex pattern';
+              matchResult.style.color = '#10B981';
+            }
+          } catch (error) {
+            regexInput.style.borderColor = '#EF4444';
+            matchResult.textContent = 'Invalid regex pattern';
+            matchResult.style.color = '#EF4444';
           }
         });
       }
